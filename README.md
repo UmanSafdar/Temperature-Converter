@@ -38,7 +38,7 @@ Fahrenheit to Celsius:
 
 Clone the repository:
 
-git clone https://github.com/your-username/temperature-converter.git
+git clone https://github.com/UmanSafdar/temperature-converter.git
 Move the project to your server directory:
 For XAMPP → htdocs
 For WAMP → www
@@ -47,9 +47,7 @@ Start Apache server.
 Open your browser and go to:
 
 http://localhost/temperature-converter
-📸 Screenshot
 
-(Add a screenshot here if you want, using GitHub image upload)
 
 🎯 Learning Outcomes
 
