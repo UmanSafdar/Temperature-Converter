@@ -1,3 +1,24 @@
+<?php
+$result = "";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // FIXED: Changed 'temperature' to 'temp' to match the HTML below
+    $temp = $_POST['temp']; 
+    $unit = $_POST['unit'];
+
+    if (is_numeric($temp)) {
+        if ($unit == "CtoF") {
+            $converted = ($temp * 9/5) + 32;
+            $result = $temp . "°C is " . number_format($converted, 2) . "°F";
+        } else {
+            $converted = ($temp - 32) * 5/9;
+            $result = $temp . "°F is " . number_format($converted, 2) . "°C";
+        }
+    } else {
+        $result = "Please enter a valid number.";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +29,7 @@
     <style>
         body { background-color: #dbedfe; }
         .converter-card { max-width: 400px; margin-top: 100px; border: none; border-radius: 15px; }
+        .result-display { background: #f8f9fa; border-radius: 10px; padding: 15px; border-left: 5px solid #212529; }
     </style>
 </head>
 <body>
@@ -36,8 +58,12 @@
             <button type="submit" class="btn btn-dark w-100 py-2 fw-bold">Convert Now</button>
         </form>
 
-        <div class="mt-4 text-center">
+        <?php if ($result != ""): ?>
+            <div class="mt-4 text-center result-display">
+                <span class="text-muted small d-block mb-1">Result</span>
+                <h5 class="fw-bold mb-0"><?php echo $result; ?></h5>
             </div>
+        <?php endif; ?>
     </div>
 </div>
 
